@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/ivImgMovie"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/dummy_movie_picture"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvMovieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/ivImgMovie"
+        app:layout_constraintTop_toTopOf="@+id/ivImgMovie"
+        android:text="@string/dummy_movie_name"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/tvMovieRatenYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_star"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tvMovieName"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
+        android:text="@string/dummy_rate_n_year"/>
+
+    <TextView
+        android:id="@+id/tvMovieDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxWidth="220dp"
+        android:maxLines="8"
+        android:text="@string/dummy_description"
+        app:layout_constraintBottom_toBottomOf="@+id/ivImgMovie"
+        app:layout_constraintStart_toStartOf="@+id/tvMovieRatenYear"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovieRatenYear" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

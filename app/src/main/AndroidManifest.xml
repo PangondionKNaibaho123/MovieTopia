@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MovieTopia"
         tools:targetApi="31">
         <activity
+            android:name=".view.page.ListCategoryMovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.page.HomeActivity"
             android:exported="false" />
         <activity

@@ -6,10 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.movietopia.R
 import com.example.movietopia.databinding.ActivityHomeBinding
+import com.example.movietopia.model.utils.Object.MOVIE_CATEGORY.Companion.NOW_PLAYING
 import com.example.movietopia.model.utils.Object.getListMovieNowPlaying
-import com.example.movietopia.view.adapter.DummyMovieAdapter
+import com.example.movietopia.view.adapter.DummyMovieHorizontalAdapter
 import com.example.movietopia.view.advanced_ui.CustomTitle
 
 class HomeActivity : AppCompatActivity() {
@@ -32,13 +32,17 @@ class HomeActivity : AppCompatActivity() {
             setTitle("Now Playing")
             setListener(object: CustomTitle.SeeAllListener{
                 override fun onSeeAllSelected() {
-                    Toast.makeText(this@HomeActivity, "See All Implemented Soon", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this@HomeActivity, "See All Implemented Soon", Toast.LENGTH_SHORT).show()
+                    startActivity(
+                        ListCategoryMovieActivity.newIntent(this@HomeActivity, NOW_PLAYING)
+                            .putExtra(ListCategoryMovieActivity.EXTRA_CATEGORY, NOW_PLAYING)
+                    )
                 }
             })
         }
 
         binding.rvNowPlaying.apply {
-            adapter = DummyMovieAdapter(getListMovieNowPlaying(), object: DummyMovieAdapter.onItemClickCallback{
+            adapter = DummyMovieHorizontalAdapter(getListMovieNowPlaying(), object: DummyMovieHorizontalAdapter.onItemClickCallback{
                 override fun onSelectedItem() {
                     Toast.makeText(this@HomeActivity, "Item Detail Implemented Soon", Toast.LENGTH_SHORT).show()
                 }
