@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MovieTopia</string>
+    <string name="dummy_movie_name">Dummy_Movie Name</string>
+    <string name="dummy_rate_n_year">dummy_rate - dummy_year</string>
+    <string name="dummy_movie_category">Dummy_Movie Category</string>
+    <string name="see_all">See All</string>
 </resources>

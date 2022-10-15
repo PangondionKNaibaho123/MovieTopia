@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivImgMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/dummy_movie_picture"/>
+
+    <TextView
+        android:id="@+id/tvMovieName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/ivImgMovie"
+        app:layout_constraintEnd_toEndOf="@+id/ivImgMovie"
+        app:layout_constraintTop_toBottomOf="@+id/ivImgMovie"
+        android:text="@string/dummy_movie_name"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/ivIconRate"-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/ivImgMovie"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvMovieName"-->
+<!--        android:src="@drawable/ic_star"/>-->
+
+    <TextView
+        android:id="@+id/tvRatenYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@drawable/ic_star"
+        app:layout_constraintStart_toStartOf="@+id/tvMovieName"
+        app:layout_constraintEnd_toEndOf="@+id/tvMovieName"
+        app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
+        android:text="@string/dummy_rate_n_year"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
