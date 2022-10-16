@@ -4,6 +4,15 @@ import com.example.movietopia.BuildConfig
 
 object Object {
 
+    interface NETWORKING{
+        companion object{
+            const val BASE_URL = "https://api.themoviedb.org/"
+            const val API_KEY = "f0e9e0e9f224c4feb567ad64ae5f0d04"
+            const val language = "en-US"
+            const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
+        }
+    }
+
     interface MOVIE_CATEGORY{
         companion object{
             const val NOW_PLAYING = "Now Playing"
@@ -14,7 +23,7 @@ object Object {
         }
     }
 
-    fun getListMovieNowPlaying(): List<DummyMovie>{
+    fun getListMovie(): List<DummyMovie>{
         return listOf(
             DummyMovie(
                 movieName = "Kamen Rider Blade: Missing Ace",
