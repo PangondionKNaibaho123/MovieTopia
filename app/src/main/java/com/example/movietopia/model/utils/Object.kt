@@ -10,7 +10,7 @@ object Object {
             const val API_KEY = "f0e9e0e9f224c4feb567ad64ae5f0d04"
             const val language = "en-US"
             const val IMAGE_URL = "https://image.tmdb.org/t/p/w500"
-            const val VIDEO_URL = "https://www.youtube.com"
+            const val YOUTUBE_URL = "https://www.youtube.com"
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.movietopia.model.networking.remote
 
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.API_KEY
 import com.example.movietopia.model.utils.response.DataMovie.ResultMovieResponse
+import com.example.movietopia.model.utils.response.DataVideoMovie.ResultVideoMovieResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,8 +25,8 @@ interface ApiService {
     ): Call<ResultMovieResponse>
 
     @GET("3/movie/{id}/videos")
-    fun getymdbPreviewVideo(
+    fun gettmdbPreviewVideo(
         @Path("id") id: String,
         @Query("api_key") apiKey: String = API_KEY
-    )
+    ): Call<ResultVideoMovieResponse>
 }

@@ -2,20 +2,29 @@ package com.example.movietopia.view.page
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.movietopia.databinding.ActivityDetailBinding
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.IMAGE_URL
+import com.example.movietopia.model.utils.Object.NETWORKING.Companion.YOUTUBE_URL
 import com.example.movietopia.model.utils.Object.convertListNumIntoListMovie
 import com.example.movietopia.model.utils.Object.convertListStringIntoString
 import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
+import com.example.movietopia.model.utils.response.DataVideoMovie.DataVideoMovieResponse
+import com.example.movietopia.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val TAG = DetailActivity::class.java.simpleName
     private lateinit var dataMovieResponse: DataMovieResponse
+
+    private val detailViewModel by viewModels<DetailViewModel>()
 
     companion object{
         const val EXTRA_ITEM = "EXTRA_ITEM"
@@ -28,7 +37,22 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpBundle()
-        setUpInfoDisplay()
+        setUpInfonOverviewDisplay()
+
+        detailViewModel.getVideoMovie(dataMovieResponse.id.toString())
+
+        detailViewModel.dataVideo.observe(this, {dataPreviewVideo ->
+            setUpPreviewMovie(dataPreviewVideo)
+        })
+
+        detailViewModel.isGettingVideoLoading.observe(this,{
+            showVideoLoading(it)
+        })
+
+        detailViewModel.isGettingVideoFail.observe(this, {
+            setUpWarning(it)
+        })
+
     }
 
     private fun setUpBundle(){
@@ -36,14 +60,11 @@ class DetailActivity : AppCompatActivity() {
         Log.d(TAG, "item Delivered : ${dataMovieResponse}")
     }
 
-    private fun setUpInfoDisplay(){
+    private fun setUpInfonOverviewDisplay(){
         binding.tvTitleMovie.text = dataMovieResponse.title
         binding.tvReleaseMovie.text = dataMovieResponse.release_date
         binding.tvVoteMovie.text = dataMovieResponse.vote_average.toString()
         binding.tvOverviewMovie.text = dataMovieResponse.overview
-
-        //Vote
-//        var genreText = convertListStringIntoString(convertListNumIntoListMovie(dataMovieResponse.genre_ids))
 
         val genreText = dataMovieResponse.genre_ids?.let {
             convertListStringIntoString(convertListNumIntoListMovie(it))
@@ -52,14 +73,41 @@ class DetailActivity : AppCompatActivity() {
         binding.tvGenreMovie.text = genreText
 
         val uriPoster = IMAGE_URL+dataMovieResponse.poster_path
-        val uriBackdrop = IMAGE_URL+dataMovieResponse.backdrop_path
+
 
         Glide.with(this@DetailActivity)
             .load(uriPoster)
             .into(binding.ivPosterMovie)
 
+    }
+
+    private fun setUpPreviewMovie(dataPreviewVideo: DataVideoMovieResponse){
+        val uri = Uri.parse(YOUTUBE_URL+"/watch?v="+dataPreviewVideo.key)
+
+        val uriBackdrop = IMAGE_URL+dataMovieResponse.backdrop_path
+
         Glide.with(this@DetailActivity)
             .load(uriBackdrop)
-            .into(binding.ivBackdropMovie)
+            .into(binding.ivPreviewMovie)
+
+        binding.ivPreviewMovie.setOnClickListener {
+            val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uri.toString()))
+            startActivity(appIntent)
+        }
+        binding.ivPlayMovie.setOnClickListener {
+            val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse(uri.toString()))
+            startActivity(appIntent)
+        }
+    }
+
+    private fun showVideoLoading(isGettingVideoLoading: Boolean){
+        binding.pbPreviewMovie.visibility = if(isGettingVideoLoading) View.VISIBLE else View.GONE
+        binding.ivPlayMovie.visibility = if(isGettingVideoLoading) View.GONE else View.VISIBLE
+    }
+
+    private fun setUpWarning(isGettingVideoFail: Boolean){
+        if(isGettingVideoFail){
+            Toast.makeText(this@DetailActivity, "We're sorry, failure happens when getting video", Toast.LENGTH_SHORT).show()
+        }
     }
 }
