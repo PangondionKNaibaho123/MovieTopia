@@ -5,4 +5,8 @@
     <string name="dummy_movie_category">Dummy_Movie Category</string>
     <string name="see_all">See All</string>
     <string name="dummy_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fusce id velit ut tortor pretium viverra. Faucibus a pellentesque sit amet porttitor. Odio ut sem nulla pharetra diam sit. Ligula ullamcorper malesuada proin libero nunc. Velit euismod in pellentesque massa placerat duis ultricies. Sed felis eget velit aliquet sagittis id consectetur purus ut. Amet nulla facilisi morbi tempus iaculis urna. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu. Pharetra sit amet aliquam id diam maecenas ultricies. Et netus et malesuada fames ac turpis egestas. Diam quis enim lobortis scelerisque fermentum dui faucibus in. Non diam phasellus vestibulum lorem sed risus. Aliquam etiam erat velit scelerisque.</string>
+    <string name="detail_info"><u>Info</u></string>
+    <string name="detail_overview"><u>Overview</u></string>
+    <string name="dummy_vote">Dummy Vote</string>
+    <string name="dummy_list_genre">Dummy_List Genre</string>
 </resources>

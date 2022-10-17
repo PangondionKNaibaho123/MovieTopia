@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".view.page.DetailActivity">
+
+    <TextView
+        android:id="@+id/tvTitleInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/detail_info"/>
+
+    <ImageView
+        android:id="@+id/ivPosterMovie"
+        android:layout_width="180dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleInfo"
+        android:src="@drawable/dummy_movie_picture"/>
+
+    <TextView
+        android:id="@+id/tvTitleMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:lines="2"
+        android:maxWidth="200dp"
+        android:singleLine="false"
+        app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+        app:layout_constraintTop_toTopOf="@+id/ivPosterMovie"
+        android:text="@string/dummy_movie_name"/>
+
+    <TextView
+        android:id="@+id/tvReleaseMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_calendar_black"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleMovie"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleMovie"
+        android:text="@string/dummy_rate_n_year"/>
+
+    <TextView
+        android:id="@+id/tvVoteMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_star"
+        android:text="@string/dummy_vote"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleMovie"
+        app:layout_constraintTop_toBottomOf="@+id/tvReleaseMovie" />
+
+    <TextView
+        android:id="@+id/tvGenreMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:lines="2"
+        android:maxWidth="200dp"
+        app:layout_constraintStart_toEndOf="@+id/ivPosterMovie"
+        app:layout_constraintStart_toStartOf="@+id/tvVoteMovie"
+        app:layout_constraintTop_toBottomOf="@+id/tvVoteMovie"
+        android:text="@string/dummy_list_genre"/>
+
+    <TextView
+        android:id="@+id/tvTitleOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivPosterMovie"
+        android:text="@string/detail_overview"/>
+
+    <ImageView
+        android:id="@+id/ivBackdropMovie"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleOverview"
+        android:src="@drawable/dummy_movie_picture"/>
+
+    <TextView
+        android:id="@+id/tvOverviewMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivBackdropMovie"
+        android:text="@string/dummy_description"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

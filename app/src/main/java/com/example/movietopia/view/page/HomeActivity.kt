@@ -10,14 +10,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movietopia.databinding.ActivityHomeBinding
-import com.example.movietopia.model.utils.Object.MOVIE_CATEGORY.Companion.NOW_PLAYING
-import com.example.movietopia.model.utils.Object.getListMovie
-import com.example.movietopia.model.utils.response.DataMovieResponse
-import com.example.movietopia.model.utils.response.ResultMovieResponse
-import com.example.movietopia.view.adapter.DummyMovieHorizontalAdapter
-import com.example.movietopia.view.adapter.DummyMovieVerticalAdapter
+import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 import com.example.movietopia.view.adapter.MovieAdapter
-import com.example.movietopia.view.advanced_ui.CustomTitle
 import com.example.movietopia.viewmodel.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -58,7 +52,10 @@ class HomeActivity : AppCompatActivity() {
         val adapter = MovieAdapter(listMovie, object: MovieAdapter.onItemClickCallback{
             override fun onSelectedItem(item: DataMovieResponse) {
                 Log.d(TAG, "item: $item")
-                Toast.makeText(this@HomeActivity, "Detail of ${item.title} implemented soon", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this@HomeActivity, "Detail of ${item.title} implemented soon", Toast.LENGTH_SHORT).show()
+                startActivity(
+                    DetailActivity.newIntent(this@HomeActivity, item)
+                )
             }
 
         })
@@ -75,14 +72,4 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    private fun setListMovieView(){
-        binding.rvMovie.apply {
-            adapter = DummyMovieVerticalAdapter(getListMovie(), object: DummyMovieVerticalAdapter.onItemClickCallback{
-                override fun onSelectedItem() {
-                    Toast.makeText(this@HomeActivity, "Detail Movie Implemented soon", Toast.LENGTH_SHORT).show()
-                }
-
-            })
-        }
-    }
 }

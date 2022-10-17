@@ -1,4 +1,4 @@
-package com.example.movietopia.model.utils.response
+package com.example.movietopia.model.utils.response.DataMovie
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.movietopia.R
 import com.example.movietopia.databinding.ItemMovieVerticalBinding
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.IMAGE_URL
-import com.example.movietopia.model.utils.response.DataMovieResponse
+import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 
 class MovieAdapter(
     var data: List<DataMovieResponse>,
