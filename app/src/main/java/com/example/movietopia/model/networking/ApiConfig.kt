@@ -1,4 +1,4 @@
-package com.example.movietopia.model.networking.remote
+package com.example.movietopia.model.networking
 
 import com.example.movietopia.BuildConfig
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.BASE_URL
@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
    companion object{
-       fun getApiService(): ApiService{
+       fun getApiService(): ApiService {
            val loggingInterceptor = if(BuildConfig.DEBUG){
                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
            }else{

@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.movietopia.databinding.ActivityDetailBinding
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.IMAGE_URL
@@ -17,6 +18,8 @@ import com.example.movietopia.model.utils.Object.convertListNumIntoListMovie
 import com.example.movietopia.model.utils.Object.convertListStringIntoString
 import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 import com.example.movietopia.model.utils.response.DataVideoMovie.DataVideoMovieResponse
+import com.example.movietopia.model.utils.response.UserReview.DataUserReview
+import com.example.movietopia.view.adapter.UserReviewAdapter
 import com.example.movietopia.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -51,6 +54,23 @@ class DetailActivity : AppCompatActivity() {
 
         detailViewModel.isGettingVideoFail.observe(this, {
             setUpWarning(it)
+        })
+
+        binding.rvUserReview.setHasFixedSize(true)
+        binding.rvUserReview.layoutManager = LinearLayoutManager(this)
+
+        detailViewModel.getMovieUserReview(dataMovieResponse.id.toString())
+
+        detailViewModel.listDataUserReview.observe(this, {listDataUserReview ->
+            setUpUserReview(listDataUserReview)
+        })
+
+        detailViewModel.isGettingListUserReviewLoading.observe(this, {
+            showUserReviewLoading(it)
+        })
+
+        detailViewModel.isGettingListUserReviewFail.observe(this, {
+            setUpWarningUserReview(it)
         })
 
     }
@@ -110,4 +130,21 @@ class DetailActivity : AppCompatActivity() {
             Toast.makeText(this@DetailActivity, "We're sorry, failure happens when getting video", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun setUpUserReview(listDataUserReview: List<DataUserReview>){
+        val adapter = UserReviewAdapter(listDataUserReview)
+        binding.rvUserReview.adapter = adapter
+    }
+
+    private fun showUserReviewLoading(isGettingUserReviewLoading: Boolean){
+        binding.pbUserReview.visibility = if(isGettingUserReviewLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun setUpWarningUserReview(isGettingUserReviewFail: Boolean){
+        if(isGettingUserReviewFail){
+//            binding.rvUserReview.visibility = View.GONE
+            Toast.makeText(this@DetailActivity, "We're Sorry, a failure happen for a while", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 }

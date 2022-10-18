@@ -4,11 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/bg_dropdown.xml" value="0.2375" />
+        <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/bg_white_black_stroke.xml" value="0.1" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/ic_play_white.xml" value="0.2115" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/ic_star.xml" value="0.1" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/splash_screen.xml" value="0.221" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/drawable/splash_screen_background.xml" value="0.221" />
-        <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/activity_detail.xml" value="0.176" />
+        <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/activity_list_category_movie.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
@@ -16,6 +17,7 @@
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/item_movie_horizontal.xml" value="0.2" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/item_movie_vertical.xml" value="0.2734375" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/item_nowplaying_horizontal.xml" value="0.152" />
+        <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/item_user_review.xml" value="0.2734375" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/layout_custom_dropdown.xml" value="0.14375" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/layout_icustom_item_dropdown.xml" value="0.264" />
         <entry key="..\:/Users/dionk/AndroidStudioProjects/MovieTopia/app/src/main/res/layout/layout_popup_custom_dropdown.xml" value="0.264" />

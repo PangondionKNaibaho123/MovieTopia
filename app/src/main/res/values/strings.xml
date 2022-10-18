@@ -8,7 +8,9 @@
     <string name="detail_info"><u>Info</u></string>
     <string name="detail_overview"><u>Overview</u></string>
     <string name="detail_preview_video"><u>Preview/Trailer Video</u></string>
+    <string name="detail_user_review"><u>User Review</u></string>
     <string name="dummy_vote">Dummy Vote</string>
     <string name="dummy_list_genre">Dummy_List Genre</string>
     <string name="select_genre_title">-Select Genre-</string>
+    <string name="dummy_username">Dummy_Username</string>
 </resources>

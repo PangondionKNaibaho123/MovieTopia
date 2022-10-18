@@ -1,8 +1,9 @@
-package com.example.movietopia.model.networking.remote
+package com.example.movietopia.model.networking
 
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.API_KEY
 import com.example.movietopia.model.utils.response.DataMovie.ResultMovieResponse
 import com.example.movietopia.model.utils.response.DataVideoMovie.ResultVideoMovieResponse
+import com.example.movietopia.model.utils.response.UserReview.ResultUserReview
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -29,4 +30,11 @@ interface ApiService {
         @Path("id") id: String,
         @Query("api_key") apiKey: String = API_KEY
     ): Call<ResultVideoMovieResponse>
+
+    @GET("3/movie/{id}/reviews")
+    fun getmovieUserReview(
+        @Path("id") id: String,
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") page: Int = 1
+    ): Call<ResultUserReview>
 }

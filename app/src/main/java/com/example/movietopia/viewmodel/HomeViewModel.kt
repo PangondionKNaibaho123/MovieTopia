@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.movietopia.model.networking.remote.ApiConfig
+import com.example.movietopia.model.networking.ApiConfig
 import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 import com.example.movietopia.model.utils.response.DataMovie.ResultMovieResponse
 import retrofit2.Call
