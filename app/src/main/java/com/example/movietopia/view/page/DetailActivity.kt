@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.movietopia.R
 import com.example.movietopia.databinding.ActivityDetailBinding
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.IMAGE_URL
 import com.example.movietopia.model.utils.Object.NETWORKING.Companion.YOUTUBE_URL
@@ -20,6 +20,8 @@ import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 import com.example.movietopia.model.utils.response.DataVideoMovie.DataVideoMovieResponse
 import com.example.movietopia.model.utils.response.UserReview.DataUserReview
 import com.example.movietopia.view.adapter.UserReviewAdapter
+import com.example.movietopia.view.advanced_ui.PopUpDialogListener
+import com.example.movietopia.view.advanced_ui.showPopUpDialog
 import com.example.movietopia.viewmodel.DetailViewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -53,7 +55,7 @@ class DetailActivity : AppCompatActivity() {
         })
 
         detailViewModel.isGettingVideoFail.observe(this, {
-            setUpWarning(it)
+            setUpWarningVideo(it)
         })
 
         binding.rvUserReview.setHasFixedSize(true)
@@ -125,9 +127,17 @@ class DetailActivity : AppCompatActivity() {
         binding.ivPlayMovie.visibility = if(isGettingVideoLoading) View.GONE else View.VISIBLE
     }
 
-    private fun setUpWarning(isGettingVideoFail: Boolean){
+    private fun setUpWarningVideo(isGettingVideoFail: Boolean){
         if(isGettingVideoFail){
-            Toast.makeText(this@DetailActivity, "We're sorry, failure happens when getting video", Toast.LENGTH_SHORT).show()
+            this.showPopUpDialog(
+                getString(R.string.text_dialog2),
+                object : PopUpDialogListener {
+                    override fun onClickListener() {
+                        closeOptionsMenu()
+                    }
+
+                }
+            )
         }
     }
 
@@ -142,8 +152,15 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setUpWarningUserReview(isGettingUserReviewFail: Boolean){
         if(isGettingUserReviewFail){
-//            binding.rvUserReview.visibility = View.GONE
-            Toast.makeText(this@DetailActivity, "We're Sorry, a failure happen for a while", Toast.LENGTH_SHORT).show()
+            this.showPopUpDialog(
+                getString(R.string.text_dialog3),
+                object : PopUpDialogListener{
+                    override fun onClickListener() {
+                        closeOptionsMenu()
+                    }
+
+                }
+            )
         }
     }
 

@@ -13,4 +13,9 @@
     <string name="dummy_list_genre">Dummy_List Genre</string>
     <string name="select_genre_title">-Select Genre-</string>
     <string name="dummy_username">Dummy_Username</string>
+    <string name="dummy_warning">Dummy Warning</string>
+    <string name="btn_ok">OK</string>
+    <string name="text_dialog1">We\'re sorry, there seems a problem when collecting the list of movie</string>
+    <string name="text_dialog2">We\'re sorry, there seems a problem when collecting the video data</string>
+    <string name="text_dialog3">We\'re sorry, there seems a problem when collecting the list of user review</string>
 </resources>

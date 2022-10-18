@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movietopia.R
@@ -17,6 +16,8 @@ import com.example.movietopia.model.utils.Object.convertNamingIntoNum
 import com.example.movietopia.model.utils.Object.getListGenre
 import com.example.movietopia.model.utils.response.DataMovie.DataMovieResponse
 import com.example.movietopia.view.adapter.MovieAdapter
+import com.example.movietopia.view.advanced_ui.PopUpDialogListener
+import com.example.movietopia.view.advanced_ui.showPopUpDialog
 import com.example.movietopia.viewmodel.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -24,7 +25,6 @@ class HomeActivity : AppCompatActivity() {
     private val TAG = HomeActivity::class.java.simpleName
 
     private val homeViewModel by viewModels<HomeViewModel>()
-    private var arrListMovie = ArrayList<DataMovieResponse>()
 
     companion object{
         fun newIntent(context: Context): Intent = Intent(context, HomeActivity::class.java)
@@ -34,7 +34,6 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setListMovieView()
 
         setUpSearchbySpinner()
 
@@ -63,7 +62,6 @@ class HomeActivity : AppCompatActivity() {
         val adapter = MovieAdapter(listMovie, object: MovieAdapter.onItemClickCallback{
             override fun onSelectedItem(item: DataMovieResponse) {
                 Log.d(TAG, "item: $item")
-//                Toast.makeText(this@HomeActivity, "Detail of ${item.title} implemented soon", Toast.LENGTH_SHORT).show()
                 startActivity(
                     DetailActivity.newIntent(this@HomeActivity, item)
                 )
@@ -79,12 +77,20 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setUpWarning(isFail: Boolean){
         if(isFail){
-            Toast.makeText(this@HomeActivity, "We're Sorry, a failure happen for a while", Toast.LENGTH_SHORT).show()
+            this.showPopUpDialog(
+                getString(R.string.text_dialog1),
+                object : PopUpDialogListener{
+                    override fun onClickListener() {
+                        closeOptionsMenu()
+                    }
+
+                }
+            )
         }
     }
 
     private fun setUpSearchbySpinner(){
-        val spinnerAdapter = ArrayAdapter<String>(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, getListGenre())
+        val spinnerAdapter = ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item, getListGenre())
 
         binding.spinnerGenre.apply {
             adapter = spinnerAdapter
@@ -102,7 +108,6 @@ class HomeActivity : AppCompatActivity() {
                             })
                         }
                         else ->{
-                            //Do the api hit through viewmodel
                             binding.rvMoviebyGenre.visibility = View.GONE
                             binding.rvMovie.visibility = View.GONE
 
