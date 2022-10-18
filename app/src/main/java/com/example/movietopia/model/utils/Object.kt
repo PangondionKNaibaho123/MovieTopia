@@ -24,6 +24,30 @@ object Object {
         }
     }
 
+    fun getListGenre(): List<String>{
+        return listOf(
+            "Select Genre",
+            "Action",
+            "Adventure",
+            "Animation",
+            "Comedy",
+            "Documentary",
+            "Drama",
+            "Family",
+            "Fantasy",
+            "History",
+            "Horror",
+            "Music",
+            "Mystery",
+            "Romance",
+            "Science Fiction",
+            "TV Movie",
+            "Thriller",
+            "War",
+            "Western",
+        )
+    }
+
     fun convertNamingIntoNum(input: String): Int = when(input){
         "Action" -> 28
         "Adventure" -> 12

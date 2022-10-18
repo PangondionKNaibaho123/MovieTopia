@@ -10,4 +10,5 @@
     <string name="detail_preview_video"><u>Preview/Trailer Video</u></string>
     <string name="dummy_vote">Dummy Vote</string>
     <string name="dummy_list_genre">Dummy_List Genre</string>
+    <string name="select_genre_title">-Select Genre-</string>
 </resources>

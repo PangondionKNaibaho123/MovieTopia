@@ -19,6 +19,12 @@ class HomeViewModel: ViewModel() {
     private var _resultMovie = MutableLiveData<ResultMovieResponse>()
     val resultMovie : LiveData<ResultMovieResponse> = _resultMovie
 
+    private var _listSearchedMovie = MutableLiveData<List<DataMovieResponse>>()
+    val listSearchedMovie : LiveData<List<DataMovieResponse>> = _listSearchedMovie
+
+    private var _resultSearchedMovie = MutableLiveData<ResultMovieResponse>()
+    val resultSearchedMovie : LiveData<ResultMovieResponse> = _resultSearchedMovie
+
     private val _isFail = MutableLiveData<Boolean>()
     val isFail: LiveData<Boolean> = _isFail
 
@@ -41,6 +47,33 @@ class HomeViewModel: ViewModel() {
                 }else{
                     _isFail.value = true
                     Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<ResultMovieResponse>, t: Throwable) {
+                _isLoading.value = false
+                _isFail.value = true
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+
+        })
+    }
+
+    fun getMoviebyGenre(genre: Int){
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().gettmdbMoviebyGenre(with_genres = genre)
+        client.enqueue(object: retrofit2.Callback<ResultMovieResponse>{
+            override fun onResponse(
+                call: Call<ResultMovieResponse>,
+                response: Response<ResultMovieResponse>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful){
+                    _resultSearchedMovie.value = response.body()
+                    _listSearchedMovie.value = resultSearchedMovie.value?.results!!
+                }else{
+                    _isFail.value = true
+                    Log.e(TAG, "!response.isSuccessful : ${response.message()}")
                 }
             }
 
